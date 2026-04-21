@@ -1,6 +1,17 @@
 # Clite
+To use Clite clone this repository using git clone, open the terminal and use the following command:
+```bash
+> make install-release
+```
 
-Use make help to see instruction on building the project
+Then, to use Clite, just use the command `clite`:
+```bash
+> clite
+== test chunk ==
+0000 OP_RETURN
+```
+
+Use make help to see instructions on building the program:
 
 ```bash
 > make help
