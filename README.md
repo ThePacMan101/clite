@@ -6,9 +6,18 @@ To use Clite clone this repository using git clone, open the terminal and use th
 
 Then, to use Clite, just use the command `clite`:
 ```bash
-> clite
-== test chunk ==
-0000 OP_RETURN
+clite
+>>> (1+2)/4.5*9
+   |  0    '('
+   | 21    '1'
+   |  7    '+'
+   | 21    '2'
+   |  1    ')'
+   |  9    '/'
+   | 21    '4.5'
+   | 10    '*'
+   | 21    '9'
+   2 39    ''
 ```
 
 Use make help to see instructions on building the program:
