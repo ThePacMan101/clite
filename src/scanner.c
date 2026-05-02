@@ -62,13 +62,14 @@ static char peek_next(){
     return scanner.current[1];
 }
 
-static void skip_whitespace(){
+static void skip_whitespaces(){
     for(;;){
         char c = peek();
         switch(c){
             case ' ':
             case '\t':
             case '\r':
+                advance();
                 break;
             case '\n':
                 scanner.line++;
@@ -115,7 +116,7 @@ static Token number(){
 
 Token scan_token(){
 
-    skip_whitespace();
+    skip_whitespaces();
 
     scanner.start = scanner.current;
     if(is_at_end()) return make_token(TOKEN_EOF);
