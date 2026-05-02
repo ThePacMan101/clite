@@ -8,7 +8,7 @@ Then, to use Clite, just use the command `clite`:
 ```bash
 clite
 >>> (1+2)/4.5*9
-   |  0    '('
+   1  0    '('
    | 21    '1'
    |  7    '+'
    | 21    '2'
