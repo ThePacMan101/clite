@@ -5,7 +5,7 @@
 
 void compile(const char* source){
     init_scanner(source);
-    int line = 1;
+    int line = 0;
     for(;;){
         Token token = scan_token();
         if(token.line != line){
