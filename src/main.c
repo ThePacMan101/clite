@@ -11,9 +11,9 @@ int main(/*int argc, const char* argv[]*/) {
 
     Chunk chunk;
     init_chunk(&chunk);
-    int constant;
     
     // test code: return (-(1.2) + 3.4)/5.6
+    int constant;
 
     constant = add_constant(&chunk,1.2);
     write_chunk(&chunk,OP_CONSTANT,123);
@@ -33,6 +33,8 @@ int main(/*int argc, const char* argv[]*/) {
     write_chunk(&chunk,OP_DIVIDE,123);
 
     write_chunk(&chunk,OP_RETURN,123);
+    
+    
     interpret(&chunk);
     free_VM();
     free_chunk(&chunk);
