@@ -1,3 +1,5 @@
+// #define DEBUG_TRACE_EXECUTION
+
 #include "vm.h"
 #include "debug.h"
 #include <stdio.h>
@@ -32,17 +34,17 @@ static InterpretResult run(){
     #endif
         uint8_t instruction;
         switch (instruction = READ_BYTE()){
-            case OP_RETURN:{
+            case OP_NEGATE: push(-pop()); break; 
+            case OP_RETURN: {
                 print_value(pop());
                 printf("\n");
                 return INTERPRET_OK;
             }
-            case OP_CONSTANT:{
+            case OP_CONSTANT: {
                 Value constant = READ_CONSTANT();
                 push(constant);
                 break;
             }
-
         }
     }
 
