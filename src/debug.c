@@ -23,6 +23,11 @@ static int constant_instruction(const char* name, Chunk* chunk, int offset){
 }
 
 int disassemble_instruction(Chunk* chunk, int offset){
+#define SIMPLE_INSTRUCTION(instruction_name) \
+case instruction_name: return  simple_instruction(#instruction_name,offset);
+#define CONSTANT_INSTRUCTION(instruction_name) \
+case instruction_name: return  constant_instruction(#instruction_name,chunk,offset);
+
     printf("%04d ",offset);
     if(offset>0 && chunk->lines[offset] == chunk->lines[offset-1]){
         printf("   | ");
@@ -31,14 +36,17 @@ int disassemble_instruction(Chunk* chunk, int offset){
     }
     uint8_t instruction = chunk->code[offset];
     switch (instruction) {
-        case OP_NEGATE:
-            return simple_instruction("OP_NEGATE",offset);
-        case OP_RETURN:
-            return simple_instruction("OP_RETURN",offset);
-        case OP_CONSTANT:
-            return constant_instruction("OP_CONSTANT",chunk,offset);
+        SIMPLE_INSTRUCTION(OP_NEGATE);
+        SIMPLE_INSTRUCTION(OP_RETURN);
+        SIMPLE_INSTRUCTION(OP_ADD);
+        SIMPLE_INSTRUCTION(OP_SUBTRACT);
+        SIMPLE_INSTRUCTION(OP_MULTIPLY);
+        SIMPLE_INSTRUCTION(OP_DIVIDE);
+        CONSTANT_INSTRUCTION(OP_CONSTANT);
         default:
             printf("Unkown opcode %d\n",instruction);
             return offset+1;
     }
+#undef SIMPLE_INSTRUCTION
+#undef CONSTANT_INSTRUCTION
 }
