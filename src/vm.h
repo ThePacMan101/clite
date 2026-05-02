@@ -1,5 +1,5 @@
-#ifndef VM_H
-#define VM_H
+#ifndef CLITE_VM_H
+#define CLITE_VM_H
 
 #include "chunk.h"
 
@@ -20,7 +20,7 @@ typedef enum{
 
 void init_VM();
 void free_VM();
-InterpretResult interpret(Chunk* chunk);
+InterpretResult interpret(const char* source);
 void push(Value value);
 Value pop();
 

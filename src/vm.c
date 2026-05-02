@@ -1,7 +1,9 @@
 // #define DEBUG_TRACE_EXECUTION
 
+#include "common.h"
 #include "vm.h"
 #include "debug.h"
+#include "compiler.h"
 #include <stdio.h>
 
 static VM vm;
@@ -63,10 +65,9 @@ push(a op b); \
 #undef BINARY_OP
 }
 
-InterpretResult interpret(Chunk* chunk){
-    vm.chunk = chunk;
-    vm.ip = vm.chunk->code;
-    return run();
+InterpretResult interpret(const char* source){
+    compile(source);
+    return INTERPRET_OK;
 }
 
 void push(Value value){
